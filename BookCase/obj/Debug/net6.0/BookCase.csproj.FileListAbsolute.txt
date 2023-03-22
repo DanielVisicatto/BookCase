@@ -1,0 +1,15 @@
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\bin\Debug\net6.0\BookCase.exe
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\bin\Debug\net6.0\BookCase.deps.json
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\bin\Debug\net6.0\BookCase.runtimeconfig.json
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\bin\Debug\net6.0\BookCase.dll
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\bin\Debug\net6.0\BookCase.pdb
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.csproj.AssemblyReference.cache
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.AssemblyInfoInputs.cache
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.AssemblyInfo.cs
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.csproj.CoreCompileInputs.cache
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.dll
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\refint\BookCase.dll
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.pdb
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\BookCase.genruntimeconfig.cache
+C:\Users\adm\Desktop\Trabalhando com arquivos\BookCase\BookCase\obj\Debug\net6.0\ref\BookCase.dll
