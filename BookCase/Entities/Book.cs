@@ -1,44 +1,41 @@
-﻿using BookCase.Enums;
-
-namespace BookCase.Entities
+﻿namespace BookCase.Entities
 {
+    [Serializable]
     internal class Book
     {
         public string Title { get; set; }
-        List<string> Authors { get; set; }
-
+        public List<string> Authors { get; set; }
         public string Edition { get; set; }
-        public string ISBN_code {get; set;}
-        public Status Status { get; set; }
+        public string ISBN_code { get; set; }
 
-        public Book(string title, List<string> authors, string edition, string iSBN_code, Status status)
+
+        public Book(string title, List<string> authors, string edition, string iSBN_code)
         {
             Title = title;
             Authors = authors;
             Edition = edition;
             ISBN_code = iSBN_code;
-            Status = status;
-        }
 
-        public string PrintAuthor(List <string> authors)
-        {            
-            foreach (var item in authors)
-            {
-               Authors.Add(item);
-            }       
-            return Authors.ToString();
+        }
+        #region[Comentário sobre método PrintAuthor que estava errado]
+        /*Estávamos adicionando itens duplicados à lista Authors em vez de retornar a lista atual. A lógica também
+        estava errada, estva recebendo a lista de autores como argumento, mas já tinha acesso à lista de autores
+        por meio da propriedade Authors.*/
+        #endregion
+        public string PrintAuthor()
+        {
+            return string.Join(", ", Authors);
         }
 
         public override string ToString()
         {
-            return $"\n--------------------------------------------------\n" +
-                     $"Book information:\n" +
-                     $"Title: {Title}\n" +
-                     $"Author(s): {PrintAuthor(Authors)}\n" +
-                     $"Edition: {Edition}\n"+
-                     $"ISBN Code: {ISBN_code}\n" +
-                     $"Situation: {Status}\n" +
-                     $"--------------------------------------------------\n";
+            return
+            $@"--------------------------------------------------
+Title: {Title}
+Author(s): {PrintAuthor()}
+Edition: {Edition}
+ISBN Code: {ISBN_code}
+--------------------------------------------------";
         }
     }
 }

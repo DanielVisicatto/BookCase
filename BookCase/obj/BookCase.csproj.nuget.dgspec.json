@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adm\\Desktop\\Trabalhando com arquivos\\BookCase\\BookCase\\BookCase.csproj": {}
+    "C:\\Users\\D4ni3L\\Desktop\\BreakingDev\\BackEnd\\CSharpDotNet\\Interacao5by5\\BookCase\\BookCase\\BookCase.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adm\\Desktop\\Trabalhando com arquivos\\BookCase\\BookCase\\BookCase.csproj": {
+    "C:\\Users\\D4ni3L\\Desktop\\BreakingDev\\BackEnd\\CSharpDotNet\\Interacao5by5\\BookCase\\BookCase\\BookCase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adm\\Desktop\\Trabalhando com arquivos\\BookCase\\BookCase\\BookCase.csproj",
+        "projectUniqueName": "C:\\Users\\D4ni3L\\Desktop\\BreakingDev\\BackEnd\\CSharpDotNet\\Interacao5by5\\BookCase\\BookCase\\BookCase.csproj",
         "projectName": "BookCase",
-        "projectPath": "C:\\Users\\adm\\Desktop\\Trabalhando com arquivos\\BookCase\\BookCase\\BookCase.csproj",
-        "packagesPath": "C:\\Users\\adm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adm\\Desktop\\Trabalhando com arquivos\\BookCase\\BookCase\\obj\\",
+        "projectPath": "C:\\Users\\D4ni3L\\Desktop\\BreakingDev\\BackEnd\\CSharpDotNet\\Interacao5by5\\BookCase\\BookCase\\BookCase.csproj",
+        "packagesPath": "C:\\Users\\D4ni3L\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\D4ni3L\\Desktop\\BreakingDev\\BackEnd\\CSharpDotNet\\Interacao5by5\\BookCase\\BookCase\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\adm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\D4ni3L\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

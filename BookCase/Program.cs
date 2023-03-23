@@ -1,14 +1,13 @@
 ﻿using BookCase.Entities;
-using BookCase.Enums;
 
 string filename = "books.txt";
 string path = @"C:\\Users\\" + Environment.UserName + "\\";
 string fullpath = string.Concat(path, filename);
-var fileText = "";
 bool userAnswer = true;
 int op;
 
 List<Book> books = new();
+
 
 do
 {
@@ -19,16 +18,23 @@ do
             Console.WriteLine("Invalid Option!\n" +
                               "Please try another...");
             break;
+
         case 1:
             books.Add(RegisterBook());
-             WriteArchives(books);
+            WriteArchives(books);
             break;
+
         case 2:
 
             break;
         case 3:
             break;
+
         case 4:
+            PrintListOFBooks(fullpath);
+            break;
+
+        case 5:
             Environment.Exit(0);
             break;
     }
@@ -44,7 +50,7 @@ Book RegisterBook()
     List<string> authors = new();
     do
     {        
-        Console.Write("Input an Author:");
+        Console.Write("Input an Author: ");
         var author = Console.ReadLine();
         authors.Add(author);
         Console.WriteLine("There is another author?  (S/N)");
@@ -57,117 +63,120 @@ Book RegisterBook()
     string edition = Console.ReadLine();
     Console.Write("ISBN_Code: ");
     string isbn = Console.ReadLine();
-    Console.Write("Book's current status: ");
-    int bookStatus = int.Parse(Console.ReadLine());
 
-    return new Book(title, authors, edition, isbn, (Status)bookStatus);
-}
-Book ToLoan(Book book)
-{
-    book.Status = (Status)3;
-    return book;
-}
-Book SearchBook(Book book)
-{
-    var userSearch = Console.ReadLine();
-    var readedFile = ReadArchives("books.txt");
-    var compared = readedFile.Trim(' ').ToUpper().Contains(userSearch.Trim(' ').ToUpper());
-    return book;
+    return new Book(title, authors, edition, isbn);
 }
 
-Book MarkAsReaded(Book book)
+void PrintListOFBooks(string filePath)
 {
-    Console.WriteLine("Witch book do you want to mark as read?");
-    var userSearch = Console.ReadLine();
-    var readedFile = ReadArchives("books.txt");
-    var compared = readedFile.Trim(' ').ToUpper().Contains(userSearch.Trim(' ').ToUpper());
-    if (compared)
+    List<Book> books = LoadBooksFromFile(filePath);
+
+    if (books.Count == 0)
     {
-        book.Status = (Status)2;
+        Console.WriteLine("There are no books on the bookcase.");
+        return;
     }
-    return book;
+
+    foreach (var book in books)
+    {
+        Console.WriteLine(book.ToString());
+    }
 }
 
-bool WriteArchives(List<Book> lb)
+void WriteArchives(List<Book> lb)
 {
     try
     {
         if (File.Exists(fullpath))
         {
-            StreamWriter sw = new(fullpath);
+            using StreamWriter sw = new(fullpath);
             foreach (var item in lb)
             {
-                sw.WriteLine(item.ToString());
+                sw.WriteLine(item);
             }
 
             Thread.Sleep(1200);
+            Console.Clear();
             Console.WriteLine($"\nCreating file in {fullpath}\n" +
                 $"Press Enter to continue.");
             Console.ReadKey();
-            sw.Close();
         }
         else
         {
-            StreamWriter sw = new(fullpath);
+            using StreamWriter sw = new(fullpath);
             foreach (var item in lb)
             {
-                sw.WriteLine(item.ToString());
+                sw.WriteLine(item);
             }
             Thread.Sleep(1200);
+            Console.Clear();
             Console.WriteLine($"\nCreating file in: {fullpath}\n" +
                 $"Press Enter to continue.");
             Console.ReadKey();
-            sw.Close();
         }
 
     }
     catch (Exception e)
     {
         throw new(e.Message);
-        return false;
     }
     finally { Console.WriteLine("Registered Successfully!\n\n"); }
-    return true;
-}
-
-string ReadArchives(string file)
-{
-    StreamReader sr = new(file);
-    try
-    {
-        fileText = sr.ReadToEnd();
-        if (fileText.Contains(null))
-        {
-            Console.WriteLine("Archive is empty!");
-            sr.Close();
-        }
-        else
-        {
-            foreach (var item in fileText)
-            {
-                Console.WriteLine(fileText);
-                sr.Close();
-            }
-        }
-
-    }
-    catch (Exception e)
-    {
-        throw new(e.Message);
-    }
-    finally
-    {
-        sr.Close();
-    }
-    return fileText;
-}
+}  
 int Menu()
 {
     Console.WriteLine("Select an option\n" +
         "1 - To register a new book\n" +
         "2 - To mark a book as readed\n" +
         "3 - To loan a book\n" +
-        "4 - Exit Program");
-    var option = int.Parse(Console.ReadLine());
+        "4 - To print current books in bookcase\n" +
+        "5 - Exit Program");
+    int option = int.Parse(Console.ReadLine());
     return option;
+}
+List<Book> LoadBooksFromFile(string filePath)
+{
+    List<Book> books = new();
+    if (File.Exists(filePath))
+    {
+        string[] lines = File.ReadAllLines(filePath);
+        foreach (string line in lines)
+        {
+            string[] bookData = line.Split(';');
+            string title = bookData[1];
+            List<string> authors = bookData[2].Split(',').ToList();
+            string edition = bookData[3];
+            string isbn = bookData[4];
+
+            Book book = new Book(title, authors, edition, isbn);
+            books.Add(book);
+        }
+    }
+    else
+    {
+        Console.WriteLine("File not found!");
+    }
+
+    return books;
+}
+string ReadArchives(string file)
+{
+    string fileText = "";
+    using StreamReader sr = new(file);
+    try
+    {
+        fileText = sr.ReadToEnd();
+        if (string.IsNullOrEmpty(fileText))
+        {
+            Console.WriteLine("Archive is empty!");
+        }
+        else
+        {
+            Console.WriteLine(fileText);
+        }
+    }
+    catch (Exception e)
+    {
+        throw new(e.Message);
+    }
+    return fileText;
 }
