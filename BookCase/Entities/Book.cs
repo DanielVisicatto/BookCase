@@ -6,9 +6,8 @@ namespace BookCase.Entities
     {
         public string Title { get; set; }
         List<string> Authors { get; set; }
-
         public string Edition { get; set; }
-        public string ISBN_code {get; set;}
+        public string ISBN_code { get; set; }
         public Status Status { get; set; }
 
         public Book(string title, List<string> authors, string edition, string iSBN_code, Status status)
@@ -20,24 +19,48 @@ namespace BookCase.Entities
             Status = status;
         }
 
-        public string PrintAuthor(List <string> authors)
-        {            
-            foreach (var item in authors)
-            {
-               Authors.Add(item);
-            }       
-            return Authors.ToString();
-        }
 
+
+        public static Book GetBookByTitle(string title, List<Book> listOfBooks)
+        {
+            Console.WriteLine("Searching...");
+            foreach (Book book in listOfBooks)
+            {
+
+                if (book.Title.ToLower().Replace(" ", "") == title.ToLower().Replace(" ", ""))
+                {
+                    Thread.Sleep(2000);
+                    Console.WriteLine("Title was found!");
+                    return book;
+                }
+            }
+            return null;
+        }
+        public void ChangeStatus(Status newStatus)
+        {
+            Status = newStatus;
+        }
+        public string PrintAuthor()
+        {
+            return string.Join("-", Authors);
+        }
+        public string GetStatus()
+        {
+            return Status.ToString();
+        }
+        public string ToArchive()
+        {
+            return $"{Title} ,  {PrintAuthor()} , {Edition} , {ISBN_code} , {GetStatus()}";
+        }
         public override string ToString()
         {
-            return $"\n--------------------------------------------------\n" +
-                     $"Book information:\n" +
+            return $"--------------------------------------------------\n" +
+                     $"Book information:\n\n" +
                      $"Title: {Title}\n" +
-                     $"Author(s): {PrintAuthor(Authors)}\n" +
-                     $"Edition: {Edition}\n"+
+                     $"Author(s): {PrintAuthor()}\n" +
+                     $"Edition: {Edition}\n" +
                      $"ISBN Code: {ISBN_code}\n" +
-                     $"Situation: {Status}\n" +
+                     $"Status: {Status}\n" +
                      $"--------------------------------------------------\n";
         }
     }
